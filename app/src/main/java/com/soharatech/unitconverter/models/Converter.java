@@ -4,9 +4,9 @@ import java.util.Map;
 
 public class Converter {
 
-    Map<String, Map<String, Double>> rates;
+    Map<Unit, Map<Unit, Double>> rates;
 
-    public Converter(Map<String, Map<String, Double>> rates) {
+    public Converter(Map<Unit, Map<Unit, Double>> rates) {
         this.rates = rates;
     }
 

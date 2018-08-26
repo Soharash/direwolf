@@ -2,16 +2,27 @@ package com.soharatech.unitconverter.models;
 
 public class Unit {
 
+    private int id;
     private double rate;
     private String name;
     private String abbr;
     private Unit prime;
 
-    public Unit(double rate, String name, String abbr, Unit prime) {
+    public Unit(int id, double rate, String name, String abbr, Unit prime) {
+        this.id = id;
         this.rate = rate;
         this.name = name;
         this.abbr = abbr;
         this.prime = prime;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    // TODO: can this function be removed?
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getRate() {
@@ -46,12 +57,12 @@ public class Unit {
         this.abbr = abbr;
     }
 
-    boolean isPrime() {
+    public boolean isPrime() {
         return prime != null;
     }
 
     @Override
     public String toString() {
-        return abbr;
+        return String.valueOf(id);
     }
 }
