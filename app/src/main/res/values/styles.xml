@@ -1,20 +1,162 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
+        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
     </style>
+
+    <style name="AppTheme" parent="Base.AppTheme" />
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="SplashTheme" parent="Base.AppTheme">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+    <!-- text styles -->
+    <style name="Base.AppText" parent="TextAppearance.AppCompat" />
+
+    <style name="Base.AppText.H1">
+        <item name="android:textSize">@dimen/app_text_h1_text_size</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="Base.AppText.H2">
+        <item name="android:textSize">@dimen/app_text_h2_text_size</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="Base.AppText.H3">
+        <item name="android:textSize">@dimen/app_text_h3_text_size</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="Base.AppText.H4">
+        <item name="android:textSize">@dimen/app_text_h4_text_size</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="Base.AppText.H5">
+        <item name="android:textSize">@dimen/app_text_h5_text_size</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="Base.AppText.H6">
+        <item name="android:textSize">@dimen/app_text_h6_text_size</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="Base.AppText.Subtitle1">
+        <item name="android:textSize">@dimen/app_text_subtitle1_text_size</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="Base.AppText.Subtitle2">
+        <item name="android:textSize">@dimen/app_text_subtitle2_text_size</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="Base.AppText.Body1">
+        <item name="android:textSize">@dimen/app_text_subtitle2_text_size</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="Base.AppText.Body2">
+        <item name="android:textSize">@dimen/app_text_body1_text_size</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="Base.AppText.Button">
+        <item name="android:textSize">@dimen/app_text_body2_text_size</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="Base.AppText.Caption">
+        <item name="android:textSize">@dimen/app_text_caption_text_size</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="Base.AppText.Overline">
+        <item name="android:textSize">@dimen/app_text_overline_text_size</item>
+        <item name="android:fontFamily">@font/app_font</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="AppText" parent="Base.AppText" />
+
+    <style name="AppText.H1" parent="Base.AppText.H1">
+        <item name="android:letterSpacing">@dimen/app_text_h1_letter_spacing</item>
+    </style>
+
+    <style name="AppText.H2" parent="Base.AppText.H2">
+        <item name="android:letterSpacing">@dimen/app_text_h2_letter_spacing</item>
+    </style>
+
+    <style name="AppText.H3" parent="Base.AppText.H3">
+        <item name="android:letterSpacing">@dimen/app_text_h3_letter_spacing</item>
+    </style>
+
+    <style name="AppText.H4" parent="Base.AppText.H4">
+        <item name="android:letterSpacing">@dimen/app_text_h4_letter_spacing</item>
+    </style>
+
+    <style name="AppText.H5" parent="Base.AppText.H5">
+        <item name="android:letterSpacing">@dimen/app_text_h5_letter_spacing</item>
+    </style>
+
+    <style name="AppText.H6" parent="Base.AppText.H6">
+        <item name="android:letterSpacing">@dimen/app_text_h6_letter_spacing</item>
+    </style>
+
+    <style name="AppText.Subtitle1" parent="Base.AppText.Subtitle1">
+        <item name="android:letterSpacing">@dimen/app_text_subtitle1_letter_spacing</item>
+    </style>
+
+    <style name="AppText.Subtitle2" parent="Base.AppText.Subtitle2">
+        <item name="android:letterSpacing">@dimen/app_text_subtitle2_letter_spacing</item>
+    </style>
+
+    <style name="AppText.Body1" parent="Base.AppText.Body1">
+        <item name="android:letterSpacing">@dimen/app_text_body1_letter_spacing</item>
+    </style>
+
+    <style name="AppText.Body2" parent="Base.AppText.Body2">
+        <item name="android:letterSpacing">@dimen/app_text_body2_letter_spacing</item>
+    </style>
+
+    <style name="AppText.Caption" parent="Base.AppText.Caption">
+        <item name="android:letterSpacing">@dimen/app_text_caption_letter_spacing</item>
+    </style>
+
+    <style name="AppText.Overline" parent="Base.AppText.Overline">
+        <item name="android:letterSpacing">@dimen/app_text_overline_letter_spacing</item>
+    </style>
 
 </resources>

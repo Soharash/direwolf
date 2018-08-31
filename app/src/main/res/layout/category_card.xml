@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="128dp"
+    android:layout_height="128dp"
+    android:layout_margin="@dimen/activity_horizontal_margin">
+
+    <TextView
+        android:id="@+id/text_view"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="center"
+        android:text="test"/>
+
+</android.support.v7.widget.CardView>
