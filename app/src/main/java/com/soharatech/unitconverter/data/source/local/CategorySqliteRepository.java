@@ -69,4 +69,36 @@ public class CategorySqliteRepository implements CategoryRepositoryContract{
 	public String update(String s){
 		throw new UnsupportedOperationException();
 	}
+	
+	
+	@Override
+	public List<String> getAll(boolean favored){
+		List<String> categories = new ArrayList<>();
+		int favoredInDb = favored ? 1 : 0;
+		String format = "select *\n" +
+				"from %s\n" +
+				"where %s = %d";
+		String query = String.format(Locale.US, format,
+				Schema.CategorySchema.TABLE_NAME, Schema.CategorySchema.FAVORED, favoredInDb);
+		Cursor c = mReadable.rawQuery(query, null);
+		c.moveToFirst();
+		while(!c.isAfterLast()){
+			categories.add(c.getString(c.getColumnIndex(Schema.CategorySchema.CATEGORY)));
+			c.moveToNext();
+		}
+		c.close();
+		return categories;
+	}
+	
+	
+	@Override
+	public List<String> getRecentSorted(int max){
+		return null;
+	}
+	
+	
+	@Override
+	public void favor(boolean favored, String category){
+	
+	}
 }

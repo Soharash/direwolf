@@ -33,4 +33,16 @@ public class CategoryRepositoryTest{
 		String category = mCategoryRepository.get("length");
 		assertTrue("length".equals(category));
 	}
+	
+	
+	@Test
+	public void getAllFavored(){
+		List<String> categories = mCategoryRepository.getAll();
+		int all = categories.size();
+		categories = mCategoryRepository.getAll(true);
+		int favored = categories.size();
+		categories = mCategoryRepository.getAll(false);
+		int notFavored = categories.size();
+		assertEquals(all, favored + notFavored);
+	}
 }
