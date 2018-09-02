@@ -10,18 +10,23 @@ import java.util.List;
 
 interface CategoryContract{
 	
-	interface View extends BaseView<Presenter>{
+	interface View extends BaseView<FragPresenter>{
 		
 		void showCategories(List<String> categories);
 		void showFilteredSearch(List<String> autoCompleted);
 	}
 	
 	
-	interface Presenter extends MultiPresenter{
+	interface FragPresenter extends MultiPresenter<View>{
+		
+		void loadCategories(String type);
+		void openCategoryDetails(@NonNull String category);
+	}
+	
+	
+	interface ActPresenter extends BasePresenter{
 		
 		void autoComplete(String str);
 		void search(String str);
-		void loadCategories(String type);
-		void openCategoryDetails(@NonNull String category);
 	}
 }

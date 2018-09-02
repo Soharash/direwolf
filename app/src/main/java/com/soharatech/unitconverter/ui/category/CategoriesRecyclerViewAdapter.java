@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import com.soharatech.unitconverter.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +49,7 @@ class CategoryView extends RecyclerView.ViewHolder{
 	private TextView mTextView;
 	
 	
-	public CategoryView(@NonNull View itemView){
+	CategoryView(@NonNull View itemView){
 		super(itemView);
 		mTextView = itemView.findViewById(R.id.text_view);
 	}

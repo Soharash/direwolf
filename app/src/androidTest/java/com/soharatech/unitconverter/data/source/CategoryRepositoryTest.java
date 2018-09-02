@@ -45,4 +45,12 @@ public class CategoryRepositoryTest{
 		int notFavored = categories.size();
 		assertEquals(all, favored + notFavored);
 	}
+	
+	
+	@Test
+	public void getLastSeen(){
+		// TODO: write a test that is valid in all cases even after database changes.
+//		List<String> categories = mCategoryRepository.getRecentSorted(2);
+//		assertEquals(1, categories.size());
+	}
 }

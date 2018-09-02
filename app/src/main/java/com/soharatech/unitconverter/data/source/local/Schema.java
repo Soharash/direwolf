@@ -7,7 +7,7 @@ class Schema{
 		static final String TABLE_NAME = "categories";
 		static final String CATEGORY = "category";
 		static final String FAVORED = "favored";
-		static final String lastAccess = "accessedAt";
+		static final String LAST_ACCESS = "accessedAt";
 	}
 	
 	

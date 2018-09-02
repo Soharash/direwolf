@@ -4,25 +4,23 @@ import android.support.annotation.NonNull;
 
 import com.soharatech.unitconverter.data.source.CategoryRepositoryContract;
 
-import java.util.Locale;
 import java.util.Map;
 import java.util.TreeMap;
 
 import static android.support.v4.util.Preconditions.checkNotNull;
 
-public class CategoryPresenter implements CategoryContract.Presenter{
+public class CategoryFragPresenter implements CategoryContract.FragPresenter{
 	
 	private CategoryRepositoryContract mCategoryRepository;
 	private Map<String, CategoryContract.View> mCategoryViews = new TreeMap<>();
 	
 	
-	public CategoryPresenter(CategoryRepositoryContract categoryRepository){
+	public CategoryFragPresenter(CategoryRepositoryContract categoryRepository){
 		mCategoryRepository = categoryRepository;
-//		mCategoryView = categoryView;
-//		mCategoryView.setPresenter(this);
 	}
 	
 	
+	@Override
 	public void putView(String type, CategoryContract.View categoryView){
 		mCategoryViews.put(type, categoryView);
 		categoryView.setPresenter(this);
@@ -38,18 +36,6 @@ public class CategoryPresenter implements CategoryContract.Presenter{
 		} else if(type.equals(CategoryFragment.RECENT)){
 		
 		}
-	}
-	
-	
-	@Override
-	public void search(String str){
-	
-	}
-	
-	
-	@Override
-	public void autoComplete(String str){
-	
 	}
 	
 	

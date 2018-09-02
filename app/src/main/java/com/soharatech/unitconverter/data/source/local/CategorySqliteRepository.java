@@ -93,7 +93,25 @@ public class CategorySqliteRepository implements CategoryRepositoryContract{
 	
 	@Override
 	public List<String> getRecentSorted(int max){
-		return null;
+		List<String> categories = new ArrayList<>();
+		String format = "select *\n" +
+				"from %s\n" +
+				"where %s > 0\n" +
+				"order by %s desc\n" +
+				"limit %d";
+		String query = String.format(Locale.US, format,
+				Schema.CategorySchema.TABLE_NAME,
+				Schema.CategorySchema.LAST_ACCESS,
+				Schema.CategorySchema.LAST_ACCESS,
+				max);
+		Cursor c = mReadable.rawQuery(query, null);
+		c.moveToFirst();
+		while(!c.isAfterLast()){
+			categories.add(c.getString(c.getColumnIndex(Schema.CategorySchema.CATEGORY)));
+			c.moveToNext();
+		}
+		c.close();
+		return categories;
 	}
 	
 	

@@ -5,8 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -21,7 +19,7 @@ import com.soharatech.unitconverter.ui.BaseActivity;
 
 public class CategoryActivity extends BaseActivity{
 	
-	private CategoryPresenter mCategoryPresenter;
+	private CategoryContract.FragPresenter mCategoryFragPresenter;
 	private DrawerLayout mDrawerLayout;
 	private ViewPager mViewPager;
 	private TabLayout mTabLayout;
@@ -32,16 +30,17 @@ public class CategoryActivity extends BaseActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.category_act);
 		// toolbar
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar toolbar = findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 		ActionBar ab = getSupportActionBar();
+		assert ab != null;
 		ab.setDisplayShowHomeEnabled(true);
 		ab.setDisplayHomeAsUpEnabled(true);
 		
 		// drawer layout
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerLayout = findViewById(R.id.drawer_layout);
 		if(mDrawerLayout != null){
-			NavigationView navView = (NavigationView) findViewById(R.id.nav_view);
+			NavigationView navView = findViewById(R.id.nav_view);
 			setupDrawerContent(navView);
 			ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 					toolbar, R.string.dummy_desc, R.string.dummy_desc){
@@ -59,23 +58,13 @@ public class CategoryActivity extends BaseActivity{
 			drawerToggle.syncState();
 		}
 		
-		mCategoryPresenter = new CategoryPresenter(new CategoryRepository(this));
+		mCategoryFragPresenter = new CategoryFragPresenter(new CategoryRepository(this));
 		
 		mViewPager = findViewById(R.id.view_pager);
 		setupViewPager();
 		
 		mTabLayout = findViewById(R.id.tabs);
 		mTabLayout.setupWithViewPager(mViewPager);
-
-//		CategoryFragment categoryFrag = (CategoryFragment) getSupportFragmentManager().findFragmentById(
-//				R.id.content_frame);
-//		if(categoryFrag == null){
-//			categoryFrag = CategoryFragment.newInstance();
-//			ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), categoryFrag,
-//					R.id.content_frame);
-//		}
-
-//		mCategoryPresenter = new CategoryPresenter(new CategoryRepository(this), categoryFrag);
 	}
 	
 	
@@ -84,15 +73,15 @@ public class CategoryActivity extends BaseActivity{
 		ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 		
 		CategoryFragment allCategoryFragment = CategoryFragment.newInstance(CategoryFragment.ALL);
-		mCategoryPresenter.putView(CategoryFragment.ALL, allCategoryFragment);
+		mCategoryFragPresenter.putView(CategoryFragment.ALL, allCategoryFragment);
 		viewPagerAdapter.addFragment(allCategoryFragment, "ALL");
 		
 		CategoryFragment favCategoryFragment = CategoryFragment.newInstance(CategoryFragment.FAVORITE);
-		mCategoryPresenter.putView(CategoryFragment.FAVORITE, favCategoryFragment);
+		mCategoryFragPresenter.putView(CategoryFragment.FAVORITE, favCategoryFragment);
 		viewPagerAdapter.addFragment(favCategoryFragment, "FAVORITES");
 		
 		CategoryFragment recentCategoryFragment = CategoryFragment.newInstance(CategoryFragment.RECENT);
-		mCategoryPresenter.putView(CategoryFragment.RECENT, recentCategoryFragment);
+		mCategoryFragPresenter.putView(CategoryFragment.RECENT, recentCategoryFragment);
 		viewPagerAdapter.addFragment(recentCategoryFragment, "RECENT");
 		
 		mViewPager.setAdapter(viewPagerAdapter);
