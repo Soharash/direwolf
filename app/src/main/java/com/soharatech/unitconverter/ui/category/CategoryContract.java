@@ -19,7 +19,6 @@ interface CategoryContract{
 	
 	interface FragPresenter extends MultiPresenter<View>{
 		
-		void loadCategories(String type);
 		void openCategoryDetails(@NonNull String category);
 	}
 	

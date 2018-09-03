@@ -17,7 +17,7 @@ import java.io.OutputStream;
 class DatabaseHelper extends SQLiteOpenHelper{
 	
 	private Context mContext;
-	private static int DB_VERSION = 2;
+	private static int DB_VERSION = 3;
 	private static String DB_NAME = "conversion.sqlite";
 	@SuppressLint("SdCardPath")
 	private static String DB_DIR = "/data/data/" + BuildConfig.APPLICATION_ID + "/databases";

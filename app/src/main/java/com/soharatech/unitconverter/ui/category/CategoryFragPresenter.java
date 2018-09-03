@@ -13,6 +13,7 @@ public class CategoryFragPresenter implements CategoryContract.FragPresenter{
 	
 	private CategoryRepositoryContract mCategoryRepository;
 	private Map<String, CategoryContract.View> mCategoryViews = new TreeMap<>();
+	private static int sRecentMax = 100;
 	
 	
 	public CategoryFragPresenter(CategoryRepositoryContract categoryRepository){
@@ -27,21 +28,20 @@ public class CategoryFragPresenter implements CategoryContract.FragPresenter{
 	}
 	
 	
+	public static void setRecentMax(int max){
+		sRecentMax = max;
+	}
+	
+	
 	@Override
 	public void start(String type){
 		if(type.equals(CategoryFragment.ALL)){
 			mCategoryViews.get(type).showCategories(mCategoryRepository.getAll());
 		} else if(type.equals(CategoryFragment.FAVORITE)){
-		
+			mCategoryViews.get(type).showCategories(mCategoryRepository.getAll(true));
 		} else if(type.equals(CategoryFragment.RECENT)){
-		
+			mCategoryViews.get(type).showCategories(mCategoryRepository.getRecentSorted(sRecentMax));
 		}
-	}
-	
-	
-	@Override
-	public void loadCategories(String type){
-	
 	}
 	
 	

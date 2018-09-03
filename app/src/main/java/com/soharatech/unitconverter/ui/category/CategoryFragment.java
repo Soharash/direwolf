@@ -58,7 +58,7 @@ public class CategoryFragment extends Fragment implements CategoryContract.View{
 	
 	private void setupRecyclerView(){
 		mAdapter = new CategoriesRecyclerViewAdapter();
-		RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
+		RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
 		mRecyclerView.setLayoutManager(mLayoutManager);
 		mRecyclerView.setAdapter(mAdapter);
 	}
