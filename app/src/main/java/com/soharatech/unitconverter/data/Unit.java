@@ -1,6 +1,8 @@
 package com.soharatech.unitconverter.data;
 
-public class Unit{
+import android.support.annotation.NonNull;
+
+public class Unit implements Comparable<Unit>{
 	
 	private int mId;
 	private double nRate;
@@ -77,5 +79,11 @@ public class Unit{
 	@Override
 	public String toString(){
 		return String.valueOf(mName);
+	}
+	
+	
+	@Override
+	public int compareTo(@NonNull Unit o){
+		return o.getId() - getId();
 	}
 }
