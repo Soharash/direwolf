@@ -46,7 +46,7 @@ public class CategoryFragPresenter implements CategoryContract.FragPresenter{
 	
 	
 	@Override
-	public void openCategoryDetails(@NonNull String category){
-	
+	public void categoryDetails(String type, @NonNull String category){
+		mCategoryViews.get(type).showConversionUi(category);
 	}
 }

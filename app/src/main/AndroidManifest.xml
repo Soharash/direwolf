@@ -24,6 +24,10 @@
         <activity
             android:name=".ui.category.CategoryActivity"
             android:launchMode="singleTop"/>
+        <activity
+            android:name=".ui.conversion.ConversionActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".ui.category.CategoryActivity"/>
     </application>
 
 </manifest>

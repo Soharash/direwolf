@@ -12,9 +12,16 @@ import com.soharatech.unitconverter.R;
 import java.util.ArrayList;
 import java.util.List;
 
+interface OnClickListener{
+	
+	void onItemClicked(CategoryView categoryView);
+}
+
+
 public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter<CategoryView>{
 	
 	private List<String> mDataSource = new ArrayList<>();
+	private OnClickListener mListener;
 	
 	
 	void setDateSource(List<String> dataSource){
@@ -32,8 +39,15 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter<Category
 	
 	
 	@Override
-	public void onBindViewHolder(@NonNull CategoryView categoryView, int i){
+	public void onBindViewHolder(@NonNull final CategoryView categoryView, int i){
 		categoryView.setText(mDataSource.get(i));
+		categoryView.setCategory(mDataSource.get(i));
+		categoryView.itemView.setOnClickListener(new View.OnClickListener(){
+			@Override
+			public void onClick(View v){
+				mListener.onItemClicked(categoryView);
+			}
+		});
 	}
 	
 	
@@ -41,12 +55,18 @@ public class CategoriesRecyclerViewAdapter extends RecyclerView.Adapter<Category
 	public int getItemCount(){
 		return mDataSource.size();
 	}
+	
+	
+	public void setOnItemClickListener(OnClickListener listener){
+		mListener = listener;
+	}
 }
 
 
 class CategoryView extends RecyclerView.ViewHolder{
 	
 	private TextView mTextView;
+	private String mCategory;
 	
 	
 	CategoryView(@NonNull View itemView){
@@ -57,5 +77,15 @@ class CategoryView extends RecyclerView.ViewHolder{
 	
 	public void setText(String str){
 		mTextView.setText(str);
+	}
+	
+	
+	public void setCategory(String category){
+		mCategory = category;
+	}
+	
+	
+	public String getCategory(){
+		return mCategory;
 	}
 }

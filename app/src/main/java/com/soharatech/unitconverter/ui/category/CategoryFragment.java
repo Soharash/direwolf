@@ -1,5 +1,6 @@
 package com.soharatech.unitconverter.ui.category;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -7,10 +8,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.soharatech.unitconverter.R;
+import com.soharatech.unitconverter.ui.conversion.ConversionActivity;
 
 import java.util.List;
 
@@ -58,6 +61,12 @@ public class CategoryFragment extends Fragment implements CategoryContract.View{
 	
 	private void setupRecyclerView(){
 		mAdapter = new CategoriesRecyclerViewAdapter();
+		mAdapter.setOnItemClickListener(new OnClickListener(){
+			@Override
+			public void onItemClicked(CategoryView categoryView){
+				mCategoryFragPresenter.categoryDetails(mType, categoryView.getCategory());
+			}
+		});
 		RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 3);
 		mRecyclerView.setLayoutManager(mLayoutManager);
 		mRecyclerView.setAdapter(mAdapter);
@@ -77,7 +86,9 @@ public class CategoryFragment extends Fragment implements CategoryContract.View{
 	
 	
 	@Override
-	public void showFilteredSearch(List<String> autoCompleted){
-	
+	public void showConversionUi(String category){
+		Intent intent = new Intent(getContext(), ConversionActivity.class);
+		intent.putExtra(ConversionActivity.CATEGORY_ARG, category);
+		startActivity(intent);
 	}
 }

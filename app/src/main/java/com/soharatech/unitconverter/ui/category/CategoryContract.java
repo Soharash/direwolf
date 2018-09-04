@@ -13,13 +13,13 @@ interface CategoryContract{
 	interface View extends BaseView<FragPresenter>{
 		
 		void showCategories(List<String> categories);
-		void showFilteredSearch(List<String> autoCompleted);
+		void showConversionUi(String category);
 	}
 	
 	
 	interface FragPresenter extends MultiPresenter<View>{
 		
-		void openCategoryDetails(@NonNull String category);
+		void categoryDetails(String type, @NonNull String category);
 	}
 	
 	
