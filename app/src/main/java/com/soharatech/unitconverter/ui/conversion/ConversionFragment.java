@@ -6,9 +6,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatSpinner;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.soharatech.unitconverter.R;
+import com.soharatech.unitconverter.data.Conversion;
 import com.soharatech.unitconverter.data.Unit;
 
 import java.util.ArrayList;
@@ -28,6 +32,7 @@ public class ConversionFragment extends Fragment implements ConversionContract.V
 	private AppCompatEditText mEditText;
 	private AppCompatSpinner mSpinner;
 	private ArrayAdapter<String> mSpinnerAdapter;
+	private ConversionRecyclerViewAdapter mRecyclerAdapter;
 	
 	
 	static ConversionFragment newInstance(){
@@ -42,6 +47,7 @@ public class ConversionFragment extends Fragment implements ConversionContract.V
 										  @Nullable Bundle savedInstanceState){
 		View mainView = inflater.inflate(R.layout.conversion_frag, container, false);
 		mRecyclerView = mainView.findViewById(R.id.recycler_view_conversion);
+		setupRecyclerView();
 		mEditText = mainView.findViewById(R.id.edit_text_source_value);
 		setupEditText();
 		mSpinner = mainView.findViewById(R.id.spinner_source_unit);
@@ -57,8 +63,11 @@ public class ConversionFragment extends Fragment implements ConversionContract.V
 	}
 	
 	
-	private void setupSpinner(){
-		setupSpinner(new ArrayList<String>());
+	private void setupRecyclerView(){
+		mRecyclerAdapter = new ConversionRecyclerViewAdapter();
+		mRecyclerView.setAdapter(mRecyclerAdapter);
+		mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+		mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 	}
 	
 	
@@ -82,6 +91,11 @@ public class ConversionFragment extends Fragment implements ConversionContract.V
 				mPresenter.notifyDecimalChange(decimal);
 			}
 		});
+	}
+	
+	
+	private void setupSpinner(){
+		setupSpinner(new ArrayList<String>());
 	}
 	
 	
@@ -119,7 +133,8 @@ public class ConversionFragment extends Fragment implements ConversionContract.V
 	
 	
 	@Override
-	public void showConversions(){
-	
+	public void showConversions(List<Conversion> conversions){
+		mRecyclerAdapter.setDataSource(conversions);
+		mRecyclerAdapter.notifyDataSetChanged();
 	}
 }

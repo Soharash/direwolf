@@ -2,7 +2,6 @@ package com.soharatech.unitconverter.ui.conversion;
 
 import android.content.Context;
 
-import com.soharatech.unitconverter.data.Conversion;
 import com.soharatech.unitconverter.data.Converter;
 import com.soharatech.unitconverter.data.Unit;
 import com.soharatech.unitconverter.data.source.ConversionRepository;
@@ -10,8 +9,6 @@ import com.soharatech.unitconverter.data.source.UnitRepository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 class ConversionPresenter implements ConversionContract.Presenter{
 	
@@ -20,25 +17,33 @@ class ConversionPresenter implements ConversionContract.Presenter{
 	private ConversionContract.View mConversionView;
 	private String mCategory;
 	private Converter mConverter;
+	private Unit mSourceUnit;
+	private double mMeasure;
+	private List<Unit> mUnits;
 	
 	
 	ConversionPresenter(Context ctx, ConversionContract.View view, String category){
 		mCategory = category;
 		mConversionRepository = new ConversionRepository(ctx, mCategory);
 		mUnitRepository = new UnitRepository(ctx, mCategory);
+		mUnits = mUnitRepository.getAll();
+		
+		mConverter = new Converter();
+		mConverter.setUnits(mUnits);
+		mConverter.inflate(mConversionRepository.getAll());
+		mSourceUnit = mUnits.get(0);
+		mMeasure = 0;
+		
 		mConversionView = view;
 		mConversionView.setPresenter(this);
-		mConverter = new Converter();
-		mConverter.inflate(mConversionRepository.getAll());
 	}
 	
 	
 	@Override
 	public void start(){
 		// TODO: add getAllNames to repository
-		List<Unit> units = mUnitRepository.getAll();
 		List<String> unitNames = new ArrayList<>();
-		for(Unit unit : units){
+		for(Unit unit : mUnits){
 			unitNames.add(unit.getName());
 		}
 		mConversionView.setUnitNames(unitNames);
@@ -47,13 +52,15 @@ class ConversionPresenter implements ConversionContract.Presenter{
 	
 	@Override
 	public void notifyDecimalChange(String decimal){
-	
+		mMeasure = Double.valueOf(decimal);
+		mConversionView.showConversions(mConverter.convertAll(mMeasure, mSourceUnit));
 	}
 	
 	
 	@Override
 	public void notifyUnitChange(int position){
-	
+		mSourceUnit = mUnits.get(position);
+		mConversionView.showConversions(mConverter.convertAll(mMeasure, mSourceUnit));
 	}
 	
 	

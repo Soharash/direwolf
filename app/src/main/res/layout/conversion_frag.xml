@@ -16,8 +16,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:inputType="numberDecimal"
-            android:layout_toStartOf="@+id/spinner_source_unit"/>
+            android:layout_toStartOf="@+id/spinner_source_unit"
+            android:inputType="numberDecimal"/>
 
         <android.support.v7.widget.AppCompatSpinner
             android:id="@+id/spinner_source_unit"
@@ -35,7 +35,5 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/top_layout_conversion"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:orientation="vertical"/>
 </RelativeLayout>

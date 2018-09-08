@@ -83,6 +83,21 @@ public class Unit implements Comparable<Unit>{
 	
 	
 	@Override
+	public boolean equals(Object obj){
+		if(!obj.getClass().equals(Unit.class)){
+			return false;
+		}
+		if(obj.hashCode() == hashCode()) return true;
+		Unit unit = (Unit) obj;
+		return unit.getId() == getId() &&
+				unit.getName().equals(getName()) &&
+				unit.getRate() == getRate() &&
+				unit.getAbbr().equals(getAbbr()) &&
+				unit.getPrime().equals(getPrime());
+	}
+	
+	
+	@Override
 	public int compareTo(@NonNull Unit o){
 		return o.getId() - getId();
 	}
