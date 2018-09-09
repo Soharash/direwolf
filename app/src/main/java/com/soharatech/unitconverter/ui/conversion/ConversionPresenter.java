@@ -52,6 +52,9 @@ class ConversionPresenter implements ConversionContract.Presenter{
 	
 	@Override
 	public void notifyDecimalChange(String decimal){
+		if (decimal.equals("")){
+			decimal = "0";
+		}
 		mMeasure = Double.valueOf(decimal);
 		mConversionView.showConversions(mConverter.convertAll(mMeasure, mSourceUnit));
 	}

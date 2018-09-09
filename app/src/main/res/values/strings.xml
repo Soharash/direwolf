@@ -19,4 +19,11 @@
     <string name="category_frag_tabbar_all">All</string>
     <string name="category_frag_tabbar_fav">Favories</string>
     <string name="category_frag_tabbar_recent">Recent</string>
+
+
+    <!-- settings fragment -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_version_title">Version</string>
+    <string name="settings_precision_title">Precision</string>
+    <string name="settings_precision_summary">Precision up to %s digits</string>
 </resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="precision"
+        android:entries="@array/precisions"
+        android:entryValues="@array/precisions"
+        android:summary="@string/settings_precision_summary"
+        android:title="@string/settings_precision_title"/>
+
+    <Preference
+        android:title="@string/settings_version_title"
+        android:summary="@string/version_name"
+        android:key="basic"/>
+</PreferenceScreen>

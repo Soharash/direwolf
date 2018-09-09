@@ -1,5 +1,6 @@
 package com.soharatech.unitconverter.ui.category;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import android.view.View;
 import com.soharatech.unitconverter.R;
 import com.soharatech.unitconverter.data.source.CategoryRepository;
 import com.soharatech.unitconverter.ui.BaseActivity;
+import com.soharatech.unitconverter.ui.Settings.SettingsActivity;
 
 public class CategoryActivity extends BaseActivity{
 	
@@ -93,6 +95,13 @@ public class CategoryActivity extends BaseActivity{
 				new NavigationView.OnNavigationItemSelectedListener(){
 					@Override
 					public boolean onNavigationItemSelected(@NonNull MenuItem menuItem){
+						int itemId = menuItem.getItemId();
+						switch(itemId){
+							case R.id.nav_settings:{
+								startActivity(new Intent(CategoryActivity.this, SettingsActivity.class));
+							}
+							default: break;
+						}
 						// TODO: setup actions for navigation view
 						return false;
 					}
