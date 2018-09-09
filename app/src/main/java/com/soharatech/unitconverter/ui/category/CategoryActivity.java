@@ -103,7 +103,7 @@ public class CategoryActivity extends BaseActivity{
 						switch(itemId){
 							case R.id.nav_settings:{
 								startActivity(new Intent(CategoryActivity.this, SettingsActivity.class));
-								break;
+								return true;
 							}
 							case R.id.nav_feedback:{
 								Intent mail = new Intent(Intent.ACTION_SENDTO);
@@ -116,13 +116,20 @@ public class CategoryActivity extends BaseActivity{
 								}
 								mail.setData(Uri.parse(uriText));
 								startActivity(Intent.createChooser(mail, "Send Email"));
-								break;
+								return true;
+							}
+							case R.id.nav_share:{
+								Intent share = new Intent(Intent.ACTION_SEND);
+								share.setType("plain/text");
+								share.putExtra(Intent.EXTRA_SUBJECT, "A Cool Unit Converter");
+								share.putExtra(Intent.EXTRA_TEXT,
+										"Checkout this unit converter at http://play.google.com/store/apps/details?id=" + getPackageName());
+								startActivity(Intent.createChooser(share, "Share"));
+								return true;
 							}
 							default:
-								break;
+								return false;
 						}
-						// TODO: setup actions for navigation view
-						return false;
 					}
 				});
 	}
