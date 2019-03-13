@@ -43,10 +43,10 @@ public class UnitSqliteRepository implements UnitRepositoryContract{
 			Unit prime = null;
 			int primeId = c.getInt(4);
 			if(primeId > 0){
-				primeId = c.getInt(5);
-				String primeName = c.getString(6);
-				String primeAbbr = c.getString(7);
-				Double primeRate = c.getDouble(8);
+				primeId = c.getInt(6);
+				String primeName = c.getString(7);
+				String primeAbbr = c.getString(8);
+				Double primeRate = c.getDouble(9);
 				prime = new Unit(primeId, primeRate, primeName, primeAbbr, null);
 			}
 			
@@ -86,10 +86,10 @@ public class UnitSqliteRepository implements UnitRepositoryContract{
 			Unit prime = null;
 			int primeId = c.getInt(4);
 			if(primeId > 0){
-				primeId = c.getInt(5);
-				String primeName = c.getString(6);
-				String primeAbbr = c.getString(7);
-				Double primeRate = c.getDouble(8);
+				primeId = c.getInt(6);
+				String primeName = c.getString(7);
+				String primeAbbr = c.getString(8);
+				Double primeRate = c.getDouble(9);
 				prime = new Unit(primeId, primeRate, primeName, primeAbbr, null);
 			}
 			

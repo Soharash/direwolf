@@ -25,7 +25,7 @@ public class UnitRepositoryTest{
 	@Test
 	public void getAll(){
 		List<Unit> units = mUnitRepository.getAll();
-		assertEquals(9, units.size());
+		assertEquals(37, units.size());
 		assertEquals(4, units.get(1).getId());
 		assertTrue("centimeter".equals(units.get(1).getName()));
 		assertTrue("cm".equals(units.get(1).getAbbr()));

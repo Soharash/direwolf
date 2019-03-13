@@ -23,7 +23,7 @@ public class CategoryRepositoryTest{
 	@Test
 	public void getAll(){
 		List<String> categories = mCategoryRepository.getAll();
-		assertEquals(1, categories.size());
+		assertEquals(3, categories.size());
 		assertTrue("length".equals(categories.get(0)));
 	}
 	

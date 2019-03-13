@@ -5,18 +5,29 @@ import android.support.annotation.NonNull;
 public class Unit implements Comparable<Unit>{
 	
 	private int mId;
-	private double nRate;
+	private double mRate;
 	private String mName;
 	private String mAbbr;
 	private Unit mPrime;
+	private double mOffset;
+	private boolean mOrder;
 	
 	
 	public Unit(int id, double rate, String name, String abbr, Unit prime){
 		mId = id;
-		nRate = rate;
+		mRate = rate;
 		mName = name;
 		mAbbr = abbr;
 		mPrime = prime;
+		mOffset = 0;
+		mOrder = true;
+	}
+	
+	
+	public Unit(int id, double rate, String name, String abbr, Unit prime, double offset, boolean order){
+		this(id, rate, name, abbr, prime);
+		mOffset = offset;
+		mOrder = order;
 	}
 	
 	
@@ -32,12 +43,12 @@ public class Unit implements Comparable<Unit>{
 	
 	
 	public double getRate(){
-		return nRate;
+		return mRate;
 	}
 	
 	
 	public void setRate(double rate){
-		nRate = rate;
+		mRate = rate;
 	}
 	
 	
@@ -68,6 +79,26 @@ public class Unit implements Comparable<Unit>{
 	
 	public void setAbbr(String abbr){
 		this.mAbbr = abbr;
+	}
+	
+	
+	public double getOffset(){
+		return mOffset;
+	}
+	
+	
+	public void setOffset(double offset){
+		mOffset = offset;
+	}
+	
+	
+	public boolean getOrder(){
+		return mOrder;
+	}
+	
+	
+	public void setOrder(boolean order){
+		mOrder = order;
 	}
 	
 	
