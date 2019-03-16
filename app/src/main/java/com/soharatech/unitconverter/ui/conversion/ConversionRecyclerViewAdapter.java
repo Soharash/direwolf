@@ -2,6 +2,7 @@ package com.soharatech.unitconverter.ui.conversion;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +69,7 @@ class ConversionView extends RecyclerView.ViewHolder{
 	
 	
 	public void setUnitAbbr(String abbr){
-		mUnitAbbr.setText(abbr);
+		mUnitAbbr.setText(Html.fromHtml(abbr));
 	}
 }
 
