@@ -23,8 +23,8 @@ public class ConversionSqliteRepository implements ConversionRepositoryContract{
 	public ConversionSqliteRepository(Context ctx, String type){
 		DatabaseHelper db = new DatabaseHelper(ctx);
 		mReadable = db.getReadableDatabase();
-		mTableName = type + "Conversion";
-		mType = type;
+		mType = type.replaceAll(" ", "__");
+		mTableName = mType + "Conversion";
 	}
 	
 	

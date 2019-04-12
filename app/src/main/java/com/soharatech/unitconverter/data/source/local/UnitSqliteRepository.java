@@ -20,7 +20,7 @@ public class UnitSqliteRepository implements UnitRepositoryContract{
 	public UnitSqliteRepository(Context ctx, String type){
 		DatabaseHelper database = new DatabaseHelper(ctx);
 		mReadable = database.getReadableDatabase();
-		mType = type;
+		mType = type.replaceAll(" ", "__");
 	}
 	
 	
